@@ -39,7 +39,7 @@ class TUISpoke(TUIObject, tui.Widget, Spoke):
     as a summary box with title, description and completed checkbox.
 
     :param title: title of this spoke
-    :type title: unicode
+    :type title: str
 
     :param category: category this spoke belongs to
     :type category: string
