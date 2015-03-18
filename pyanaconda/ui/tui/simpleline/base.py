@@ -580,7 +580,7 @@ class UIScreen(object):
                 w.render(self.app.width)
             if isinstance(w, Widget):
                 self._print_long_widget(w)
-            elif type(w) == str:
+            elif type(w) == bytes:
                 print(w.decode("utf-8"))
             else:
                 # not a widget or string, just print its string representation
@@ -770,7 +770,7 @@ class Widget(object):
         if not text:
             return
 
-        if isinstance(text, str):
+        if isinstance(text, bytes):
             try:
                 text = text.decode("utf-8")
             except UnicodeDecodeError as e:
