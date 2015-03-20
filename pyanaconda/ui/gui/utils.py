@@ -196,7 +196,7 @@ def gtk_batch_map(action, items, args=(), pre_func=None, batch_size=1):
         # out of time but something left, reschedule to run again later
         return True
 
-    item_queue_instance = queue_instance.Queue()
+    item_queue_instance = queue.Queue()
     done_event = threading.Event()
 
     # we don't want to log the whole list, type and address is enough
