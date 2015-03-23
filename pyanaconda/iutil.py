@@ -1125,10 +1125,6 @@ def lowerASCII(s):
     if isinstance(s, bytes):
         s = s.decode(sys.getdefaultencoding())
 
-    print("IN")
-    print(s)
-    print("OUT")
-    print(str.translate(_toASCII(s), _ASCIIlower_table))
     return str.translate(_toASCII(s), _ASCIIlower_table)
 
 def upcase_first_letter(text):
