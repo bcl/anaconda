@@ -100,7 +100,7 @@ def _validateProxy(proxy_string, username_set, password_set):
     return InputCheck.CHECK_OK
 
 class ProxyDialog(GUIObject, GUIDialogInputCheckHandler):
-    builderObjects = ["proxyDialog", "mainViewport"]
+    builderObjects = ["proxyDialog"]
     mainWidgetName = "proxyDialog"
     uiFile = "spokes/source.glade"
 
@@ -121,11 +121,6 @@ class ProxyDialog(GUIObject, GUIDialogInputCheckHandler):
 
         self._proxyValidate = self.add_check(self._proxyURLEntry, self._checkProxyURL)
         self._proxyValidate.update_check_status()
-
-        # Connect scroll events on the viewport with focus events on the box
-        mainViewport = self.builder.get_object("mainViewport")
-        mainBox = self.builder.get_object("mainBox")
-        mainBox.set_focus_vadjustment(mainViewport.get_vadjustment())
 
     def _checkProxyURL(self, inputcheck):
         proxy_string = self.get_input(inputcheck.input_obj)
@@ -614,6 +609,11 @@ class SourceSpoke(NormalSpoke, GUISpokeInputCheckHandler):
         NormalSpoke.initialize(self)
 
         self._grabObjects()
+
+        # Connect scroll events on the viewport with focus events on the box
+        mainViewport = self.builder.get_object("mainViewport")
+        mainBox = self.builder.get_object("mainBox")
+        mainBox.set_focus_vadjustment(mainViewport.get_vadjustment())
 
         # I shouldn't have to do this outside GtkBuilder, but it really doesn't
         # want to let me pass in user data.
